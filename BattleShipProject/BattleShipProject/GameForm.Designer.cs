@@ -44,6 +44,7 @@
             this.lblX = new System.Windows.Forms.Label();
             this.lblSize = new System.Windows.Forms.Label();
             this.lvBoard = new System.Windows.Forms.ListView();
+            this.btnRestart = new System.Windows.Forms.Button();
             this.gbSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nrPozY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nrPozX)).BeginInit();
@@ -56,10 +57,10 @@
             // btnStart
             // 
             this.btnStart.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnStart.Location = new System.Drawing.Point(171, 72);
-            this.btnStart.Margin = new System.Windows.Forms.Padding(2);
+            this.btnStart.Location = new System.Drawing.Point(233, 89);
+            this.btnStart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(92, 30);
+            this.btnStart.Size = new System.Drawing.Size(123, 37);
             this.btnStart.TabIndex = 0;
             this.btnStart.Text = "Start game";
             this.btnStart.UseVisualStyleBackColor = true;
@@ -83,9 +84,11 @@
             this.gbSettings.Controls.Add(this.lblY);
             this.gbSettings.Controls.Add(this.lblX);
             this.gbSettings.Controls.Add(this.lblSize);
-            this.gbSettings.Location = new System.Drawing.Point(12, 6);
+            this.gbSettings.Location = new System.Drawing.Point(16, 7);
+            this.gbSettings.Margin = new System.Windows.Forms.Padding(4);
             this.gbSettings.Name = "gbSettings";
-            this.gbSettings.Size = new System.Drawing.Size(440, 108);
+            this.gbSettings.Padding = new System.Windows.Forms.Padding(4);
+            this.gbSettings.Size = new System.Drawing.Size(597, 133);
             this.gbSettings.TabIndex = 20;
             this.gbSettings.TabStop = false;
             this.gbSettings.Text = "Settings";
@@ -93,9 +96,10 @@
             // nrPozY
             // 
             this.nrPozY.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.nrPozY.Location = new System.Drawing.Point(134, 47);
+            this.nrPozY.Location = new System.Drawing.Point(184, 58);
+            this.nrPozY.Margin = new System.Windows.Forms.Padding(4);
             this.nrPozY.Maximum = new decimal(new int[] {
-            20,
+            10,
             0,
             0,
             0});
@@ -105,10 +109,10 @@
             0,
             0});
             this.nrPozY.Name = "nrPozY";
-            this.nrPozY.Size = new System.Drawing.Size(42, 20);
+            this.nrPozY.Size = new System.Drawing.Size(56, 22);
             this.nrPozY.TabIndex = 32;
             this.nrPozY.Value = new decimal(new int[] {
-            1,
+            5,
             0,
             0,
             0});
@@ -116,9 +120,10 @@
             // nrPozX
             // 
             this.nrPozX.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.nrPozX.Location = new System.Drawing.Point(135, 19);
+            this.nrPozX.Location = new System.Drawing.Point(185, 23);
+            this.nrPozX.Margin = new System.Windows.Forms.Padding(4);
             this.nrPozX.Maximum = new decimal(new int[] {
-            20,
+            10,
             0,
             0,
             0});
@@ -128,10 +133,10 @@
             0,
             0});
             this.nrPozX.Name = "nrPozX";
-            this.nrPozX.Size = new System.Drawing.Size(41, 20);
+            this.nrPozX.Size = new System.Drawing.Size(55, 22);
             this.nrPozX.TabIndex = 31;
             this.nrPozX.Value = new decimal(new int[] {
-            1,
+            5,
             0,
             0,
             0});
@@ -139,63 +144,66 @@
             // nrShip4
             // 
             this.nrShip4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.nrShip4.Location = new System.Drawing.Point(336, 50);
+            this.nrShip4.Location = new System.Drawing.Point(453, 62);
+            this.nrShip4.Margin = new System.Windows.Forms.Padding(4);
             this.nrShip4.Maximum = new decimal(new int[] {
             5,
             0,
             0,
             0});
             this.nrShip4.Name = "nrShip4";
-            this.nrShip4.Size = new System.Drawing.Size(41, 20);
+            this.nrShip4.Size = new System.Drawing.Size(55, 22);
             this.nrShip4.TabIndex = 30;
             // 
             // nrShip3
             // 
             this.nrShip3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.nrShip3.Location = new System.Drawing.Point(335, 17);
+            this.nrShip3.Location = new System.Drawing.Point(452, 21);
+            this.nrShip3.Margin = new System.Windows.Forms.Padding(4);
             this.nrShip3.Maximum = new decimal(new int[] {
             5,
             0,
             0,
             0});
             this.nrShip3.Name = "nrShip3";
-            this.nrShip3.Size = new System.Drawing.Size(42, 20);
+            this.nrShip3.Size = new System.Drawing.Size(56, 22);
             this.nrShip3.TabIndex = 29;
             // 
             // nrShip2
             // 
             this.nrShip2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.nrShip2.Location = new System.Drawing.Point(238, 45);
+            this.nrShip2.Location = new System.Drawing.Point(322, 55);
+            this.nrShip2.Margin = new System.Windows.Forms.Padding(4);
             this.nrShip2.Maximum = new decimal(new int[] {
             5,
             0,
             0,
             0});
             this.nrShip2.Name = "nrShip2";
-            this.nrShip2.Size = new System.Drawing.Size(42, 20);
+            this.nrShip2.Size = new System.Drawing.Size(56, 22);
             this.nrShip2.TabIndex = 28;
             // 
             // nrShip1
             // 
             this.nrShip1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.nrShip1.Location = new System.Drawing.Point(238, 19);
+            this.nrShip1.Location = new System.Drawing.Point(322, 23);
+            this.nrShip1.Margin = new System.Windows.Forms.Padding(4);
             this.nrShip1.Maximum = new decimal(new int[] {
             5,
             0,
             0,
             0});
             this.nrShip1.Name = "nrShip1";
-            this.nrShip1.Size = new System.Drawing.Size(42, 20);
+            this.nrShip1.Size = new System.Drawing.Size(56, 22);
             this.nrShip1.TabIndex = 27;
             // 
             // lblship4
             // 
             this.lblship4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblship4.AutoSize = true;
-            this.lblship4.Location = new System.Drawing.Point(285, 54);
-            this.lblship4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblship4.Location = new System.Drawing.Point(385, 66);
             this.lblship4.Name = "lblship4";
-            this.lblship4.Size = new System.Drawing.Size(40, 13);
+            this.lblship4.Size = new System.Drawing.Size(52, 17);
             this.lblship4.TabIndex = 26;
             this.lblship4.Text = "Ship 4:";
             // 
@@ -203,10 +211,9 @@
             // 
             this.lblship3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblship3.AutoSize = true;
-            this.lblship3.Location = new System.Drawing.Point(287, 24);
-            this.lblship3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblship3.Location = new System.Drawing.Point(388, 30);
             this.lblship3.Name = "lblship3";
-            this.lblship3.Size = new System.Drawing.Size(40, 13);
+            this.lblship3.Size = new System.Drawing.Size(52, 17);
             this.lblship3.TabIndex = 25;
             this.lblship3.Text = "Ship 3:";
             // 
@@ -214,10 +221,9 @@
             // 
             this.lblship2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblship2.AutoSize = true;
-            this.lblship2.Location = new System.Drawing.Point(190, 50);
-            this.lblship2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblship2.Location = new System.Drawing.Point(258, 62);
             this.lblship2.Name = "lblship2";
-            this.lblship2.Size = new System.Drawing.Size(40, 13);
+            this.lblship2.Size = new System.Drawing.Size(52, 17);
             this.lblship2.TabIndex = 24;
             this.lblship2.Text = "Ship 2:";
             // 
@@ -225,10 +231,9 @@
             // 
             this.lblship1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblship1.AutoSize = true;
-            this.lblship1.Location = new System.Drawing.Point(191, 21);
-            this.lblship1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblship1.Location = new System.Drawing.Point(260, 26);
             this.lblship1.Name = "lblship1";
-            this.lblship1.Size = new System.Drawing.Size(40, 13);
+            this.lblship1.Size = new System.Drawing.Size(52, 17);
             this.lblship1.TabIndex = 23;
             this.lblship1.Text = "Ship 1:";
             // 
@@ -236,10 +241,9 @@
             // 
             this.lblY.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblY.AutoSize = true;
-            this.lblY.Location = new System.Drawing.Point(112, 52);
-            this.lblY.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblY.Location = new System.Drawing.Point(154, 64);
             this.lblY.Name = "lblY";
-            this.lblY.Size = new System.Drawing.Size(17, 13);
+            this.lblY.Size = new System.Drawing.Size(21, 17);
             this.lblY.TabIndex = 22;
             this.lblY.Text = "Y:";
             // 
@@ -247,10 +251,9 @@
             // 
             this.lblX.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblX.AutoSize = true;
-            this.lblX.Location = new System.Drawing.Point(112, 22);
-            this.lblX.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblX.Location = new System.Drawing.Point(154, 27);
             this.lblX.Name = "lblX";
-            this.lblX.Size = new System.Drawing.Size(17, 13);
+            this.lblX.Size = new System.Drawing.Size(21, 17);
             this.lblX.TabIndex = 21;
             this.lblX.Text = "X:";
             this.lblX.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -259,32 +262,48 @@
             // 
             this.lblSize.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblSize.AutoSize = true;
-            this.lblSize.Location = new System.Drawing.Point(49, 39);
-            this.lblSize.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSize.Location = new System.Drawing.Point(70, 48);
             this.lblSize.Name = "lblSize";
-            this.lblSize.Size = new System.Drawing.Size(59, 13);
+            this.lblSize.Size = new System.Drawing.Size(79, 17);
             this.lblSize.TabIndex = 20;
             this.lblSize.Text = "Board size:";
             // 
             // lvBoard
             // 
             this.lvBoard.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lvBoard.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lvBoard.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lvBoard.GridLines = true;
             this.lvBoard.HideSelection = false;
-            this.lvBoard.Location = new System.Drawing.Point(12, 130);
+            this.lvBoard.Location = new System.Drawing.Point(21, 160);
+            this.lvBoard.Margin = new System.Windows.Forms.Padding(4);
             this.lvBoard.Name = "lvBoard";
-            this.lvBoard.Size = new System.Drawing.Size(440, 196);
+            this.lvBoard.Size = new System.Drawing.Size(585, 267);
             this.lvBoard.TabIndex = 21;
             this.lvBoard.UseCompatibleStateImageBehavior = false;
-            this.lvBoard.SelectedIndexChanged += new System.EventHandler(this.lvBoard_SelectedIndexChanged);
+            this.lvBoard.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lvBoard_MouseDown);
+            // 
+            // btnRestart
+            // 
+            this.btnRestart.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnRestart.Location = new System.Drawing.Point(249, 447);
+            this.btnRestart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnRestart.Name = "btnRestart";
+            this.btnRestart.Size = new System.Drawing.Size(123, 37);
+            this.btnRestart.TabIndex = 22;
+            this.btnRestart.Text = "Restart game";
+            this.btnRestart.UseVisualStyleBackColor = true;
+            this.btnRestart.Click += new System.EventHandler(this.btnRestart_Click);
             // 
             // GameForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(464, 338);
+            this.ClientSize = new System.Drawing.Size(629, 511);
+            this.Controls.Add(this.btnRestart);
             this.Controls.Add(this.lvBoard);
             this.Controls.Add(this.gbSettings);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "GameForm";
             this.Text = "Battleship ";
             this.Load += new System.EventHandler(this.GameForm_Load);
@@ -318,5 +337,6 @@
         private System.Windows.Forms.Label lblX;
         private System.Windows.Forms.Label lblSize;
         private System.Windows.Forms.ListView lvBoard;
+        private System.Windows.Forms.Button btnRestart;
     }
 }
