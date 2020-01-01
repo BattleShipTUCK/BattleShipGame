@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,8 @@ namespace BattleShipProject
 {
     public partial class GameForm : Form
     {
+        private Board board { get; set; }
+
         public GameForm()
         {
             InitializeComponent();
@@ -28,34 +31,34 @@ namespace BattleShipProject
             }
             else if (state.Equals("Game"))
             {
-                this.Size = new Size(650, 500);
+                this.Size = new Size(450, 400);
                 gbSettings.Enabled = false;
                 lvBoard.Visible = true;
                 btnRestart.Visible = true;
             }
-            else
-            {
-
-            }
         }
 
-        public void createCompletionList(int x, int y)
+        public void createCompletionList()
         {
-            //uzupełnienie listy
-            for (int i = 0; i < x; i++)
+            List<string> boardListViewItem = board.InitializeBoard();
+            for (int i = 0; i < board.getboardSizeX(); i++)
             {
-                lvBoard.Columns.Add("", 20, HorizontalAlignment.Left);
+                lvBoard.Columns.Add("", 30, HorizontalAlignment.Left);
             }
+            DrawBoard(boardListViewItem);
 
-            string[] signs = new string[x];
-            for (int j = 0; j < y ; j++)
+        }
+
+        private void DrawBoard(List<string> boardListViewItem)
+        {
+            int idx = 0;
+            for (int i = 0; i < board.getboardSizeY(); i++)
             {
-                for (int k = 0; k < x ; k++)
-                {
-                    signs[k] = "?";
-                }
-                ListViewItem lvi = new ListViewItem(signs);
-                lvBoard.Items.Add(lvi);
+                List<String> itemsInRow = boardListViewItem.GetRange(idx, board.getboardSizeX());
+                string[] itemsInRoww = itemsInRow.ToArray();
+                var listViewItem = new ListViewItem(itemsInRoww);
+                lvBoard.Items.Add(listViewItem);
+                idx += board.getboardSizeX() - 1;
             }
         }
 
@@ -63,8 +66,10 @@ namespace BattleShipProject
         {
             lvBoard.View = View.Details;
             setControls("Game");
-            Board board = new Board(Convert.ToInt32(nrPozX.Value), Convert.ToInt32(nrPozY.Value));
-            createCompletionList(Convert.ToInt32(nrPozX.Value), Convert.ToInt32(nrPozY.Value));
+
+            board = new Board(Convert.ToInt32(nrPozX.Value), Convert.ToInt32(nrPozY.Value), (int)nrShip1.Value, (int)nrShip2.Value, (int)nrShip3.Value, (int)nrShip4.Value);
+
+            createCompletionList();
         }
 
         private void GameForm_Load(object sender, EventArgs e)
@@ -84,14 +89,17 @@ namespace BattleShipProject
             var info = lvBoard.HitTest(e.X, e.Y);
             try
             {
-                var row = info.Item.Index;
-                var col = info.Item.SubItems.IndexOf(info.SubItem);
-               // var value = info.Item.SubItems[col].Text;
-                lvBoard.Items[row].SubItems[col].Text = "X";
+                int row = info.Item.Index;
+                int col = info.Item.SubItems.IndexOf(info.SubItem);
+                // var value = info.Item.SubItems[col].Text;
+                string shotResult = board.VerifyShot(row, col);
+                lvBoard.Items[row].SubItems[col].Text = shotResult;
                 lvBoard.Items[row].UseItemStyleForSubItems = false;
-                lvBoard.Items[row].SubItems[col].ForeColor = Color.Red;
-                //MessageBox.Show(string.Format("{0}:{1}", row, col, value));
-            } catch
+                lvBoard.Items[row].SubItems[col].ForeColor = (shotResult == "X") ? Color.Red : Color.Green;
+
+                //MessageBox.Show(string.Format("{0}:{1}", row, col));
+            }
+            catch
             {
                 //Wczytanie wartości z poza listy
             }
