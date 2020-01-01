@@ -13,13 +13,15 @@ namespace BattleShipProject
 {
     public partial class GameForm : Form
     {
+        private int hitShot = 0;
+        private int missedShot = 0;
+
         private Board board { get; set; }
 
         public GameForm()
         {
             InitializeComponent();
         }
-        //trzy stany, Menu-opcja ustawienia planszy, Game - plansza, stan pusty
         public void setControls(String state)
         {
             if (state.Equals("Menu"))
@@ -28,6 +30,9 @@ namespace BattleShipProject
                 gbSettings.Enabled = true;
                 lvBoard.Visible = false;
                 btnRestart.Visible = false;
+                hitShot = 0;
+                missedShot = 0;
+                lvBoard.Enabled = true;
             }
             else if (state.Equals("Game"))
             {
@@ -35,6 +40,17 @@ namespace BattleShipProject
                 gbSettings.Enabled = false;
                 lvBoard.Visible = true;
                 btnRestart.Visible = true;
+                hitShot = 0;
+                missedShot = 0;
+                lvBoard.Enabled = true;
+            }
+            else if (state.Equals("GameOver"))
+            {
+                this.Size = new Size(450, 400);
+                gbSettings.Enabled = false;
+                lvBoard.Visible = true;
+                btnRestart.Visible = true;
+                lvBoard.Enabled = false;
             }
         }
 
@@ -83,7 +99,6 @@ namespace BattleShipProject
             lvBoard.Clear();
         }
 
-
         private void lvBoard_MouseDown(object sender, MouseEventArgs e)
         {
             var info = lvBoard.HitTest(e.X, e.Y);
@@ -91,19 +106,48 @@ namespace BattleShipProject
             {
                 int row = info.Item.Index;
                 int col = info.Item.SubItems.IndexOf(info.SubItem);
-                // var value = info.Item.SubItems[col].Text;
+
                 string shotResult = board.VerifyShot(row, col);
+                if (lvBoard.Items[row].SubItems[col].Text.Equals("?"))
+                {
+                    ShotStats(shotResult);
+                }
+                    
                 lvBoard.Items[row].SubItems[col].Text = shotResult;
                 lvBoard.Items[row].UseItemStyleForSubItems = false;
                 lvBoard.Items[row].SubItems[col].ForeColor = (shotResult == "X") ? Color.Red : Color.Green;
 
-                //MessageBox.Show(string.Format("{0}:{1}", row, col));
+                if (CheckWin())
+                {
+                    setControls("GameOver"); 
+                    MessageBox.Show("Wszystkie statki zostały zestrzelone.Strzały udane : " + hitShot + ", strzały chybione : " + missedShot);
+                }
             }
             catch
             {
                 //Wczytanie wartości z poza listy
+                MessageBox.Show("Wybrano nieprawidłowe pole");
             }
 
         }
+
+        private  bool CheckWin()
+        {
+            if ((missedShot + hitShot) > 24)
+                return true;
+            else
+                return false;
+        }
+
+        private  void ShotStats(String strzal)
+        {
+            if (strzal.Equals("X")) {
+                missedShot += 1;
+            } else
+            {
+                hitShot += 1;
+            }
+        }
+
     }
 }
