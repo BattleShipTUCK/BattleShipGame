@@ -23,16 +23,21 @@ class Board
     private int ship3Count = 0;
     private int ship4Count = 0;
 
+    private int ship1Size = 1;
+    private int ship2Size = 2;
+    private int ship3Size = 3;
+    private int ship4Size = 4;
+
 
     public Board(int boardSizeX, int boardSizeY, int ship1, int ship2, int ship3, int ship4)
     {
         this.boardSizeX = boardSizeX;
         this.boardSizeY = boardSizeY;
         rnd = new Random();
-        ship1Count = ship1;
-        ship2Count = ship2;
-        ship3Count = ship3;
-        ship4Count = ship4;
+        ship1Count = ship1; 
+        ship2Count = ship2; 
+        ship3Count = ship3; 
+        ship4Count = ship4; 
     }
 
     public List<String> InitializeBoard()
@@ -46,90 +51,80 @@ class Board
         return fieldList;
     }
 
+    public static String[] getList(int sizeList)
+    {
+        List<String> list = new List<String>();
+        for (int i = 0; i < sizeList; i++)
+            list.Add("");
+        return list.ToArray();
+    }
+
     private void GenerateShips()
     {
-        ships = new List<string>()
-            {
-                "", "", "", "", "",
-                "", "", "", "", "",
-                "", "", "", "", "",
-                "", "", "", "", "",
-                "", "", "", "", "",
-            };
+        ships = new List<string>(getList(boardSizeX * boardSizeY));
+        int idxX = 0;
+        int idxY = 0;
+
+        //Ship4
         List<int> reservedY = new List<int>();
-
-
-        //Ship4 x1
-        int idxX = rnd.Next(0, boardSizeX - 4);
-        int idxY = rnd.Next(0, boardSizeY - 1);
-        reservedY.Add(idxY);
-
-        int arrayIdx = idxY * boardSizeX + idxX;
-
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < ship4Count; i++)
         {
-            ships.Insert(arrayIdx + i, "S4");
+            idxX = rnd.Next(0, boardSizeX - 4);
+            idxY = rnd.Next(0, boardSizeY - 1);
+            reservedY.Add(idxY);
+            int arrayIdx = idxY * boardSizeX + idxX;
+            for (int j = 0; j < ship4Size; j++)
+            {
+                ships[arrayIdx + j] = "S4";
+            }
         }
 
-
-        //Ship3 x2
-        for (int i = 0; i < 1; i++)
+        //Ship3
+        for (int i = 0; i < ship3Count; i++)
         {
             idxX = rnd.Next(0, boardSizeX - 3);
-
             idxY = rnd.Next(0, boardSizeY - 1);
-
             while (reservedY.Any(x => x == idxY))
             {
                 idxY = rnd.Next(0, boardSizeY - 1);
             }
             reservedY.Add(idxY);
-
-            for (int j = 0; j < 3; j++)
+            for (int j = 0; j < ship3Size; j++)
             {
-                ships.Insert(idxY * boardSizeX + idxX + j, "S3");
+                ships[idxY * boardSizeX + idxX + j] = "S3";
             }
         }
-
-        for (int i = 0; i < 2; i++)
+        //Ship2
+        for (int i = 0; i < ship2Count; i++)
         {
             idxX = rnd.Next(0, boardSizeX - 2);
-
             idxY = rnd.Next(0, boardSizeY - 1);
-
             while (reservedY.Any(x => x == idxY))
             {
                 idxY = rnd.Next(0, boardSizeY - 1);
             }
-            //reservedY.Add(idxY);
-
-            for (int j = 0; j < 2; j++)
+            reservedY.Add(idxY);
+            for (int j = 0; j < ship2Size; j++)
             {
-                ships.Insert(idxY * boardSizeX + idxX + j, "S2");
+                ships[idxY * boardSizeX + idxX + j] = "S2";
             }
         }
 
-        for (int i = 0; i < 1; i++)
+        // Ship1
+        for (int i = 0; i < ship1Count; i++)
         {
             idxX = rnd.Next(0, boardSizeX - 1);
-
             idxY = rnd.Next(0, boardSizeY - 1);
-
             while (reservedY.Any(x => x == idxY))
             {
                 idxY = rnd.Next(0, boardSizeY - 1);
             }
-            //reservedY.Add(idxY);
-
-            for (int j = 0; j < 1; j++)
+            for (int j = 0; j < ship1Size; j++)
             {
-                ships.Insert(idxY * boardSizeX + idxX + j, "S1");
+                ships[idxY * boardSizeX + idxX + j] = "S1";
             }
         }
-
-
     }
-
 
     public string VerifyShot(int row, int col)
     {

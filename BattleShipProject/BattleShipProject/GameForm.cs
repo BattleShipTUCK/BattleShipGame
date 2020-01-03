@@ -15,9 +15,7 @@ namespace BattleShipProject
     {
         private int hitShot = 0;
         private int missedShot = 0;
-
         private Board board { get; set; }
-
         public GameForm()
         {
             InitializeComponent();
@@ -125,15 +123,13 @@ namespace BattleShipProject
             }
             catch
             {
-                //Wczytanie wartości z poza listy
                 MessageBox.Show("Wybrano nieprawidłowe pole");
             }
-
         }
 
         private  bool CheckWin()
         {
-            if ((missedShot + hitShot) > 24)
+            if (hitShot == (nrShip1.Value *1) + (nrShip2.Value*2)+(nrShip3.Value*3)+(nrShip4.Value*4) )
                 return true;
             else
                 return false;
