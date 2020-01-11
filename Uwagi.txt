@@ -1,0 +1,4 @@
+-GenerateShips - nazwa, wydzielenie na metody 
+-Konstruktor - argumenty w liście ship
+-Logika na string, lepiej typy wyliczeniowe enumerator
+-Logika biznesowa pomieszana z widokiem 
