@@ -12,16 +12,16 @@ using System.Windows.Forms;
 class Board
 {
     private List<string> fieldList;
-    private List<string> ships;
+    private List<int> ships;
     private int boardSizeX = 0;
     private int boardSizeY = 0;
     private Random rnd;
 
 
-    private int ship1Count = 0;
-    private int ship2Count = 0;
-    private int ship3Count = 0;
-    private int ship4Count = 0;
+    private int ship1Count = 1;
+    private int ship2Count = 1;
+    private int ship3Count = 1;
+    private int ship4Count = 1;
 
     private int ship1Size = 1;
     private int ship2Size = 2;
@@ -29,15 +29,12 @@ class Board
     private int ship4Size = 4;
 
 
-    public Board(int boardSizeX, int boardSizeY, int ship1, int ship2, int ship3, int ship4)
+    public Board(int boardSizeX, int boardSizeY)
     {
         this.boardSizeX = boardSizeX;
         this.boardSizeY = boardSizeY;
         rnd = new Random();
-        ship1Count = ship1; 
-        ship2Count = ship2; 
-        ship3Count = ship3; 
-        ship4Count = ship4; 
+
     }
 
     public List<String> InitializeBoard()
@@ -51,17 +48,17 @@ class Board
         return fieldList;
     }
 
-    public static String[] getList(int sizeList)
+    public static int[] getList(int sizeList)
     {
-        List<String> list = new List<String>();
+        List<int> list = new List<int>();
         for (int i = 0; i < sizeList; i++)
-            list.Add("");
+            list.Add(0);
         return list.ToArray();
     }
 
     private void GenerateShips()
     {
-        ships = new List<string>(getList(boardSizeX * boardSizeY));
+        ships = new List<int>(getList(boardSizeX * boardSizeY));
         int idxX = 0;
         int idxY = 0;
 
@@ -75,7 +72,7 @@ class Board
             int arrayIdx = idxY * boardSizeX + idxX;
             for (int j = 0; j < ship4Size; j++)
             {
-                ships[arrayIdx + j] = "S4";
+                ships[arrayIdx + j] = 4;
             }
         }
 
@@ -91,7 +88,7 @@ class Board
             reservedY.Add(idxY);
             for (int j = 0; j < ship3Size; j++)
             {
-                ships[idxY * boardSizeX + idxX + j] = "S3";
+                ships[idxY * boardSizeX + idxX + j] = 3;
             }
         }
         //Ship2
@@ -106,7 +103,7 @@ class Board
             reservedY.Add(idxY);
             for (int j = 0; j < ship2Size; j++)
             {
-                ships[idxY * boardSizeX + idxX + j] = "S2";
+                ships[idxY * boardSizeX + idxX + j] = 2;
             }
         }
 
@@ -121,7 +118,7 @@ class Board
             }
             for (int j = 0; j < ship1Size; j++)
             {
-                ships[idxY * boardSizeX + idxX + j] = "S1";
+                ships[idxY * boardSizeX + idxX + j] = 2;
             }
         }
     }
@@ -131,13 +128,13 @@ class Board
         int arrayIndex = row * boardSizeX + col;
         switch (ships[arrayIndex])
         {
-            case "S1":
+            case 1:
                 return "S1";
-            case "S2":
+            case 2:
                 return "S2";
-            case "S3":
+            case 3:
                 return "S3";
-            case "S4":
+            case 4:
                 return "S4";
             default:
                 return "X";
@@ -157,7 +154,5 @@ class Board
     {
         return boardSizeY;
     }
-
-
 }
 

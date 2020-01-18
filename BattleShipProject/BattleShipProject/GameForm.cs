@@ -81,7 +81,8 @@ namespace BattleShipProject
             lvBoard.View = View.Details;
             setControls("Game");
 
-            board = new Board(Convert.ToInt32(nrPozX.Value), Convert.ToInt32(nrPozY.Value), (int)nrShip1.Value, (int)nrShip2.Value, (int)nrShip3.Value, (int)nrShip4.Value);
+            //board = new Board(Convert.ToInt32(nrPozX.Value), Convert.ToInt32(nrPozY.Value), (int)nrShip1.Value, (int)nrShip2.Value, (int)nrShip3.Value, (int)nrShip4.Value);
+            board = new Board(Convert.ToInt32(nrPozX.Value), Convert.ToInt32(nrPozY.Value));
 
             createCompletionList();
         }
