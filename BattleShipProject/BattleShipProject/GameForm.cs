@@ -60,7 +60,6 @@ namespace BattleShipProject
                 lvBoard.Columns.Add("", 30, HorizontalAlignment.Left);
             }
             DrawBoard(boardListViewItem);
-
         }
 
         private void DrawBoard(List<string> boardListViewItem)
@@ -80,10 +79,7 @@ namespace BattleShipProject
         {
             lvBoard.View = View.Details;
             setControls("Game");
-
-            //board = new Board(Convert.ToInt32(nrPozX.Value), Convert.ToInt32(nrPozY.Value), (int)nrShip1.Value, (int)nrShip2.Value, (int)nrShip3.Value, (int)nrShip4.Value);
             board = new Board(Convert.ToInt32(nrPozX.Value), Convert.ToInt32(nrPozY.Value));
-
             createCompletionList();
         }
 
@@ -98,6 +94,9 @@ namespace BattleShipProject
             lvBoard.Clear();
         }
 
+
+
+
         private void lvBoard_MouseDown(object sender, MouseEventArgs e)
         {
             var info = lvBoard.HitTest(e.X, e.Y);
@@ -109,14 +108,14 @@ namespace BattleShipProject
                 string shotResult = board.VerifyShot(row, col);
                 if (lvBoard.Items[row].SubItems[col].Text.Equals("?"))
                 {
-                    ShotStats(shotResult);
+                    shotStats(shotResult);
                 }
                     
                 lvBoard.Items[row].SubItems[col].Text = shotResult;
                 lvBoard.Items[row].UseItemStyleForSubItems = false;
                 lvBoard.Items[row].SubItems[col].ForeColor = (shotResult == "X") ? Color.Red : Color.Green;
 
-                if (CheckWin())
+                if (checkWin())
                 {
                     setControls("GameOver"); 
                     MessageBox.Show("Wszystkie statki zostały zestrzelone.Strzały udane : " + hitShot + ", strzały chybione : " + missedShot);
@@ -128,7 +127,10 @@ namespace BattleShipProject
             }
         }
 
-        private  bool CheckWin()
+
+
+
+        private  bool checkWin()
         {
             if (hitShot == (nrShip1.Value *1) + (nrShip2.Value*2)+(nrShip3.Value*3)+(nrShip4.Value*4) )
                 return true;
@@ -136,7 +138,9 @@ namespace BattleShipProject
                 return false;
         }
 
-        private  void ShotStats(String strzal)
+
+
+        private  void shotStats(String strzal)
         {
             if (strzal.Equals("X")) {
                 missedShot += 1;
