@@ -106,11 +106,13 @@ namespace BattleShipProject
                 int col = info.Item.SubItems.IndexOf(info.SubItem);
 
                 string shotResult = board.VerifyShot(row, col);
+
+
                 if (lvBoard.Items[row].SubItems[col].Text.Equals("?"))
                 {
                     shotStats(shotResult);
                 }
-                    
+
                 lvBoard.Items[row].SubItems[col].Text = shotResult;
                 lvBoard.Items[row].UseItemStyleForSubItems = false;
                 lvBoard.Items[row].SubItems[col].ForeColor = (shotResult == "X") ? Color.Red : Color.Green;
@@ -140,11 +142,13 @@ namespace BattleShipProject
 
 
 
-        private  void shotStats(String strzal)
+        private void shotStats(String strzal)
         {
-            if (strzal.Equals("X")) {
+            if (strzal.Equals("X"))
+            {
                 missedShot += 1;
-            } else
+            }
+            else
             {
                 hitShot += 1;
             }
