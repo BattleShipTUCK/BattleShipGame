@@ -4,6 +4,8 @@ addons:
     token:
       secure: "1e49c9ac6e086ad9c060095ed7c4a74932ef8939" # encrypted value of your token
 
+language: csharp
+solution: BattleShipProject.sln
 script:
-  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
-  - sonar-scanner
+  - msbuild /p:Configuration=Release BattleShipProject.sln
+  - mono ./packages/xunit.runners.*/tools/xunit.console.clr4.exe 
