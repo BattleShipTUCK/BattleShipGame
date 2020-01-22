@@ -12,7 +12,8 @@ namespace BattleShipProject
         private int hitShot = 0;
         private int missedShot = 0;
 
-        private void shotStats(String strzal)
+
+        public void shotStats(String strzal)
         {
             if (strzal.Equals("X"))
             {
@@ -24,6 +25,14 @@ namespace BattleShipProject
             }
         }
 
+        public bool checkWin(int sum)
+        {
+            if (hitShot == sum)
+                return true;
+            else
+                return false;
+        }
+
         public int gethitShot()
         {
             return hitShot;
@@ -32,6 +41,16 @@ namespace BattleShipProject
         public int getmissedShot()
         {
             return missedShot;
+        }
+
+        public void sethitShot(int shot)
+        {
+            hitShot = shot;
+        }
+
+        public void setmissedShot(int shot)
+        {
+            missedShot = shot;
         }
 
     }

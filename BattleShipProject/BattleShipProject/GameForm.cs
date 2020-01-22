@@ -13,8 +13,8 @@ namespace BattleShipProject
 {
     public partial class GameForm : Form
     {
-        private int hitShot = 0;
-        private int missedShot = 0;
+        Stats stats = new Stats();
+        int win = 10;
         private Board board { get; set; }
         public GameForm()
         {
@@ -28,8 +28,8 @@ namespace BattleShipProject
                 gbSettings.Enabled = true;
                 lvBoard.Visible = false;
                 btnRestart.Visible = false;
-                hitShot = 0;
-                missedShot = 0;
+                stats.sethitShot(0);
+                stats.setmissedShot(0);
                 lvBoard.Enabled = true;
             }
             else if (state.Equals("Game"))
@@ -38,8 +38,8 @@ namespace BattleShipProject
                 gbSettings.Enabled = false;
                 lvBoard.Visible = true;
                 btnRestart.Visible = true;
-                hitShot = 0;
-                missedShot = 0;
+                stats.sethitShot(0);
+                stats.setmissedShot(0);
                 lvBoard.Enabled = true;
             }
             else if (state.Equals("GameOver"))
@@ -110,17 +110,17 @@ namespace BattleShipProject
 
                 if (lvBoard.Items[row].SubItems[col].Text.Equals("?"))
                 {
-                    shotStats(shotResult);
+                    stats.shotStats(shotResult);
                 }
 
                 lvBoard.Items[row].SubItems[col].Text = shotResult;
                 lvBoard.Items[row].UseItemStyleForSubItems = false;
                 lvBoard.Items[row].SubItems[col].ForeColor = (shotResult == "X") ? Color.Red : Color.Green;
 
-                if (checkWin())
+                if (stats.checkWin(win))
                 {
-                    setControls("GameOver"); 
-                    MessageBox.Show("Wszystkie statki zostały zestrzelone.Strzały udane : " + hitShot + ", strzały chybione : " + missedShot);
+                    setControls("GameOver");
+                    MessageBox.Show("Wszystkie statki zostały zestrzelone.Strzały udane : " + Convert.ToString(stats.gethitShot()) + ", strzały chybione : " + Convert.ToString(stats.getmissedShot()));
                 }
             }
             catch
@@ -128,31 +128,5 @@ namespace BattleShipProject
                 MessageBox.Show("Wybrano nieprawidłowe pole");
             }
         }
-
-
-
-
-        private  bool checkWin()
-        {
-            if (hitShot == (nrShip1.Value *1) + (nrShip2.Value*2)+(nrShip3.Value*3)+(nrShip4.Value*4) )
-                return true;
-            else
-                return false;
-        }
-
-
-
-        private void shotStats(String strzal)
-        {
-            if (strzal.Equals("X"))
-            {
-                missedShot += 1;
-            }
-            else
-            {
-                hitShot += 1;
-            }
-        }
-
     }
 }
