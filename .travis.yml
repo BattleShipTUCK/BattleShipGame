@@ -1,46 +1,9 @@
-
-  language: csharp
-solution: heroes-app-webapi.sln
-dist: trusty
-sudo: required
-
-mono:
-  - latest
-
-install:
-  - nuget restore heroes-app-webapi.sln
-  - nuget install NUnit.Console -Version 3.9.0 -OutputDirectory testrunner
-
 addons:
   sonarcloud:
     organization: "battleshiptuck"
     token:
-      secure: "9088be0550ff7a333bc1bdba8169770fde88972d" # encrypted value of your token
+      secure: "1e49c9ac6e086ad9c060095ed7c4a74932ef8939" # encrypted value of your token
 
-
-cache:
-  directories:
-    - '$HOME/.sonar/cache'
-
-git:
-  clone: true
-  quiet: false
-  depth: false
-  submodules: true
-
-# blocklist
-branches:
-  except:
-  - legacy
-  - experimental
-
-# safelist
-branches:
-  only:
-  - master
-  - stable
-  
-  script:
+script:
   # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
   - sonar-scanner
-  
