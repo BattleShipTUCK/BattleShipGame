@@ -87,8 +87,8 @@ namespace UnitTest
                 }
                 sumShot = Convert.ToInt32(statsT.gethitShot()) + Convert.ToInt32(statsT.getmissedShot());
             }
-            Assert.IsTrue(statsT.checkWin(win))
-            ;            Assert.AreEqual(sumShot, declareSizeX * declareSizeY, "");
+            Assert.IsTrue(statsT.checkWin(win));            
+            Assert.AreEqual(sumShot, declareSizeX * declareSizeY, "");
         }
     }
 
