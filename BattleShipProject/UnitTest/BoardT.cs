@@ -1,26 +1,23 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-
-class Board
+class BoardT
 {
     private List<string> fieldList;
     private List<int> ships;
     private int boardSizeX = 0;
     private int boardSizeY = 0;
+    private Random rnd;
+    private GenerateAllShipT generateAllShip;
 
 
-    public Board(int boardSizeX, int boardSizeY)
+    public BoardT(int boardSizeX, int boardSizeY)
     {
         this.boardSizeX = boardSizeX;
         this.boardSizeY = boardSizeY;
-   }
+        rnd = new Random();
+
+    }
 
     public List<String> InitializeBoard()
     {
@@ -29,20 +26,12 @@ class Board
         {
             fieldList.Add("?");
         }
-
-        //generateAllShip = new GenerateAllShip();
-        //GenerateShips(1,1,1,1);
+        generateAllShip = new GenerateAllShipT();
+        ships = generateAllShip.GenerateShips(boardSizeX, boardSizeY);
 
         return fieldList;
     }
-
-    public static int[] getList(int sizeList)
-    {
-        List<int> list = new List<int>();
-        for (int i = 0; i < sizeList; i++)
-            list.Add(0);
-        return list.ToArray();
-    }
+  
 
     public string VerifyShot(int row, int col)
     {
