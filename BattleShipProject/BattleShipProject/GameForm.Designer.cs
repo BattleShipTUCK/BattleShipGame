@@ -64,7 +64,7 @@
             this.btnStart.TabIndex = 0;
             this.btnStart.Text = "Start game";
             this.btnStart.UseVisualStyleBackColor = true;
-            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            this.btnStart.Click += new System.EventHandler(this.BtnStart_Click);
             // 
             // gbSettings
             // 
@@ -305,7 +305,7 @@
             this.lvBoard.Size = new System.Drawing.Size(471, 181);
             this.lvBoard.TabIndex = 21;
             this.lvBoard.UseCompatibleStateImageBehavior = false;
-            this.lvBoard.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lvBoard_MouseDown);
+            this.lvBoard.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LvBoard_MouseDown);
             // 
             // btnRestart
             // 
@@ -317,7 +317,7 @@
             this.btnRestart.TabIndex = 22;
             this.btnRestart.Text = "Restart game";
             this.btnRestart.UseVisualStyleBackColor = true;
-            this.btnRestart.Click += new System.EventHandler(this.btnRestart_Click);
+            this.btnRestart.Click += new System.EventHandler(this.BtnRestart_Click);
             // 
             // GameForm
             // 

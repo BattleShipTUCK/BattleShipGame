@@ -13,9 +13,9 @@ namespace BattleShipProject
         private int missedShot = 0;
 
 
-        public void shotStats(String strzal)
+        public void ShotStats(String strzal)
         {
-            if (strzal.Equals("X"))
+            if (strzal.Equals("X", StringComparison.CurrentCulture))
             {
                 missedShot += 1;
             }
@@ -25,7 +25,7 @@ namespace BattleShipProject
             }
         }
 
-        public bool checkWin(int sum)
+        public bool CheckWin(int sum)
         {
             if (hitShot == sum)
                 return true;
@@ -33,22 +33,22 @@ namespace BattleShipProject
                 return false;
         }
 
-        public int gethitShot()
+        public int GetHitShot()
         {
             return hitShot;
         }
 
-        public int getmissedShot()
+        public int GetMissedShot()
         {
             return missedShot;
         }
 
-        public void sethitShot(int shot)
+        public void SetHitShot(int shot)
         {
             hitShot = shot;
         }
 
-        public void setmissedShot(int shot)
+        public void SetMissedShot(int shot)
         {
             missedShot = shot;
         }

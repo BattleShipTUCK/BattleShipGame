@@ -1,0 +1,7 @@
+organization=battleshiptuck
+projectKey=BattleShipTUCK_BattleShipGame
+serverUrl=https://sonarcloud.io
+serverVersion=8.0.0.4183
+dashboardUrl=https://sonarcloud.io/dashboard?id=BattleShipTUCK_BattleShipGame
+ceTaskId=AW_TTwiQwCdr8tw8LPLx
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AW_TTwiQwCdr8tw8LPLx
