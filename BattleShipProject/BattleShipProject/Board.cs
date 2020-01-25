@@ -5,9 +5,8 @@ class Board
 {
     private List<string> fieldList;
     private List<int> ships;
-    private int boardSizeX = 0;
-    private int boardSizeY = 0;
-    private Random rnd;
+    private readonly int boardSizeX = 0;
+    private readonly int boardSizeY = 0;
     private GenerateAllShip generateAllShip;
 
 
@@ -15,7 +14,6 @@ class Board
     {
         this.boardSizeX = boardSizeX;
         this.boardSizeY = boardSizeY;
-        rnd = new Random();
 
     }
 
@@ -50,17 +48,17 @@ class Board
                 return "X";
         }
     }
-    public List<string> getPointList()
+    public List<string> GetPointList()
     {
         return fieldList;
     }
 
-    public int getboardSizeX()
+    public int GetboardSizeX()
     {
         return boardSizeX;
     }
 
-    public int getboardSizeY()
+    public int GetboardSizeY()
     {
         return boardSizeY;
     }

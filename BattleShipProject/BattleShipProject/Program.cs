@@ -12,6 +12,7 @@ namespace BattleShipProject
         /// Główny punkt wejścia dla aplikacji.
         /// </summary>
         [STAThread]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Reliability", "CA2000:Likwiduj obiekty przed utratą zakresu", Justification = "<Oczekujące>")]
         static void Main()
         {
             Application.EnableVisualStyles();

@@ -55,7 +55,7 @@ namespace BattleShipProject
         public void CreateCompletionList()
         {
             List<string> boardListViewItem = Board.InitializeBoard();
-            for (int i = 0; i < Board.getboardSizeX(); i++)
+            for (int i = 0; i < Board.GetboardSizeX(); i++)
             {
                 lvBoard.Columns.Add("", 30, HorizontalAlignment.Left);
             }
@@ -65,13 +65,13 @@ namespace BattleShipProject
         private void DrawBoard(List<string> boardListViewItem)
         {
             int idx = 0;
-            for (int i = 0; i < Board.getboardSizeY(); i++)
+            for (int i = 0; i < Board.GetboardSizeY(); i++)
             {
-                List<String> itemsInRow = boardListViewItem.GetRange(idx, Board.getboardSizeX());
+                List<String> itemsInRow = boardListViewItem.GetRange(idx, Board.GetboardSizeX());
                 string[] itemsInRoww = itemsInRow.ToArray();
                 var listViewItem = new ListViewItem(itemsInRoww);
                 lvBoard.Items.Add(listViewItem);
-                idx += Board.getboardSizeX() - 1;
+                idx += Board.GetboardSizeX() - 1;
             }
         }
 
